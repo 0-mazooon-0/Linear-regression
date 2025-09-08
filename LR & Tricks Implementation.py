@@ -71,8 +71,6 @@ def Linear_Regression(features, labels, learning_rate = None, epochs = None):
     
     weight = random.random()
     bias = random.random()
-    weight = 123
-    bias = 321
 
     if learning_rate is None:
         learning_rate = 0.01
@@ -87,8 +85,9 @@ def Linear_Regression(features, labels, learning_rate = None, epochs = None):
         x = features[n]
         y = labels[n]
 
-        # weight, bias = square_trick(learning_rate, weight, x, y, bias)
-        weights, bias = simple_trick(learning_rate, weight, x, y, bias)
+        # We will use the square trick
+        weight, bias = square_trick(learning_rate, weight, x, y, bias)
+        # weights, bias = simple_trick(learning_rate, weight, x, y, bias)
         # weight, bias = absolute_trick(learning_rate, weight, x, y, bias)
 
     return weight, bias
@@ -99,9 +98,6 @@ def Multiple_Feature_Linear_Regression(*features, labels, learning_rate = None, 
     weights = [random.random() for x in range(len(features))]
     bias = random.random()
 
-    # weight = 123
-    # bias = 321
-
     if learning_rate is None:
         learning_rate = 0.01
 
@@ -109,8 +105,8 @@ def Multiple_Feature_Linear_Regression(*features, labels, learning_rate = None, 
         epochs = 10000
 
     for i in range(epochs):
-
         # random number to choose a random point (x, y)
+        
         n = random.randint(0, len(features) - 1)
         y = labels[n]
 
@@ -121,4 +117,5 @@ def Multiple_Feature_Linear_Regression(*features, labels, learning_rate = None, 
         weight, bias = square_trick_multiple_feature(learning_rate, weight, x, y, bias)
 
     return weight, bias
+
 
